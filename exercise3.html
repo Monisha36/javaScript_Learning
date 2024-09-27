@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Click Event</title>
+    <style>
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <p>Paragraph 3</p>
+
+    <script>
+        const paragraphs = document.querySelectorAll("p");
+
+        paragraphs.forEach((paragraph) => {
+            let clickCount = 0;
+
+            paragraph.addEventListener('click', () => {
+                clickCount++;
+                setTimeout(() => {
+                    if (clickCount === 1) {
+                        paragraph.classList.remove('green');
+                        paragraph.classList.add('red'); 
+                    } else if (clickCount === 2) {
+                        paragraph.classList.remove('red');
+                        paragraph.classList.add('green'); 
+                    } else if (clickCount === 3) {
+                        paragraph.classList.remove('red', 'green'); 
+                    }
+                    clickCount = 0; 
+                }, 300); 
+            });
+        });
+    </script>
+
+</body>
+</html>
